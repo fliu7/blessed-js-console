@@ -21,3 +21,6 @@ scratch.js
 
 # Ignore coverage results
 /coverage/
+
+# Ignore build output
+dist
