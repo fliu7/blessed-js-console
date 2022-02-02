@@ -1,25 +1,12 @@
 {
 	"name": "js2",
-	"description": "A mouse-driven REPL shell",
+	"description": "An improved REPL js console",
 	"scripts": {
         "build": "ncc build index.js -o dist",
         "compress": "terser dist/index.js -o dist/js2.js"
 	},
-	"version": "0.3.5",
-	"keywords": [
-		"console",
-		"debug",
-		"debugger",
-		"devtools",
-		"log",
-		"repl",
-		"shell",
-		"terminal",
-		"tty",
-		"ultra-repl"
-	],
-	"repository": "11ways/janeway",
-	"license": "MIT",
+	"version": "1",
+	"repository": "asana/js2",
 	"dependencies": {
 		"neo-blessed"  : "~0.2.0",
 		"copy-paste"   : "~1.3.0",
