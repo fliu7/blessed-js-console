@@ -1,11 +1,11 @@
-var JS2 = require('./dist/js2.js');
+var JsConsole = require('./index.js');
 
-JS2.start(function onReady(err) {
+JsConsole.start(function onReady(err) {
 
-	JS2.setTitle('JS2');
+	JsConsole.setTitle('JsConsole');
 });
 
 process.on('uncaughtException', function onError(error) {
-	JS2.debug('Found error...');
-	JS2.debug(error);
+	JsConsole.debug('Found error...');
+	JsConsole.debug(error);
 });
