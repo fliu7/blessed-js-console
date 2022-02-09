@@ -24,3 +24,5 @@ scratch.js
 
 # Ignore build output
 dist
+
+package-lock.json

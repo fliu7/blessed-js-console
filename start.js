@@ -1,9 +1,9 @@
-var JsConsole = require('./index.js');
+const jsConsole = require('./index.js');
 
-JsConsole.start();
+jsConsole.start();
 
 process.on('uncaughtException', function onError(error) {
-    JsConsole.debug(error);
+    jsConsole.debug(error);
 });
 
 /**
@@ -33,7 +33,7 @@ Fiber(function() {
     }
 }).run();
 
-JsConsole.start(function evaluate(code) {
+jsConsole.start(function evaluate(code) {
     vmFiber.code = code;
     return vmFiber.run();
 });
