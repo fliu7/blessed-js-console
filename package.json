@@ -1,21 +1,20 @@
 {
-	"name": "js2",
-	"description": "An improved REPL js console",
+	"name": "JsConsole",
+	"description": "An improved REPL JS console",
 	"scripts": {
-        "build": "ncc build index.js -o dist",
-        "compress": "terser dist/index.js -o dist/js2.js"
+		"build": "ncc build index.js -o dist",
+		"compress": "terser dist/index.js -o dist/js2.js"
 	},
-	"version": "1",
+	"version": "0.0.1",
 	"repository": "asana/js2",
 	"dependencies": {
-		"neo-blessed"  : "~0.2.0",
-		"copy-paste"   : "~1.3.0"
+		"neo-blessed": "~0.2.0"
 	},
 	"engines": {
 		"node": ">=8.0.0"
 	},
-    "devDependencies": {
-        "@vercel/ncc": "^0.31.1",
-         "terser": "^5.9.0"
-    }
+	"devDependencies": {
+		"@vercel/ncc": "^0.31.1",
+		"terser": "^5.9.0"
+	}
 }
