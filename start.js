@@ -1,6 +1,6 @@
 const jsConsole = require('./index.js');
 
-jsConsole.start();
+jsConsole.start(Object.create(global));
 
 process.on('uncaughtException', function onError(error) {
     jsConsole.debug(error);
@@ -20,10 +20,13 @@ function init() {
 }
 
 let vmFiber;
+let vmContext;
 Fiber(function() {
-    vmFiber = Fiber.current;
     init();
+    vmContext = Object.create(globalThis);
+    vmFiber = Fiber.current;
     Fiber.yield();
+
     var vm = require('vm');
     while (vmFiber.code) {
         const script = new vm.Script(vmFiber.code,  { filename: 'evaluate.vm' });
@@ -33,7 +36,7 @@ Fiber(function() {
     }
 }).run();
 
-jsConsole.start(function evaluate(code) {
+jsConsole.start(vmContext, function evaluate(code) {
     vmFiber.code = code;
     return vmFiber.run();
 });
