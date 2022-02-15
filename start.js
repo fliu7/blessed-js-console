@@ -12,32 +12,37 @@ process.on('uncaughtException', function onError(error) {
  * Use a custom evaluate function and run script inside a fiber.
  * This simulates Luna server environment. 
  */
-
 /*
 var Fiber = require('fibers');
-function init() {
+var vm = require('vm');
+
+function initEnv() {
     global.foo = 'bar';
 }
 
-let vmFiber;
-let vmContext;
-Fiber(function() {
-    init();
-    vmContext = Object.create(globalThis);
-    vmFiber = Fiber.current;
-    Fiber.yield();
+function runInFiber(fn) {
+    return new Promise(function(resolve, reject) {
+        Fiber(function() {
+            try {
+                const result = fn();
+                resolve(result);
+            } catch (err) {
+                reject(err);
+            }
+        }).run();
+    });
+}
 
-    var vm = require('vm');
-    while (vmFiber.code) {
-        const script = new vm.Script(vmFiber.code,  { filename: 'evaluate.vm' });
-        const result = script.runInThisContext();
-        vmFiber.code = null;
-        Fiber.yield(result);
-    }
-}).run();
+runInFiber(function() {
+    initEnv();
+    return vm.createContext(Object.create(global));
+}).then(function(vmContext) {
 
-jsConsole.start(vmContext, function evaluate(code) {
-    vmFiber.code = code;
-    return vmFiber.run();
+    js2.start(vmContext, function evaluate(code) {
+        return runInFiber(function() {
+            const script = new vm.Script(code,  { filename: 'console-code' });
+            return script.runInContext(vmContext);
+        });
+    });
 });
 */
