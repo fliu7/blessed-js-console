@@ -1,12 +1,12 @@
 {
-	"name": "JsConsole",
-	"description": "An improved REPL JS console",
+	"name": "BlessedJsConsole",
+	"description": "A mouse-driven JS console built on neo-blessed",
 	"scripts": {
 		"build": "ncc build index.js -o dist",
-		"compress": "terser dist/index.js -o dist/js2.js"
+		"compress": "terser dist/index.js -o dist/blessed-js-console.min.js"
 	},
 	"version": "0.0.1",
-	"repository": "asana/js2",
+	"repository": "asana/blessed-js-console",
 	"dependencies": {
 		"neo-blessed": "~0.2.0"
 	},
