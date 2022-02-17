@@ -1,6 +1,6 @@
 const jsConsole = require('./index.js');
 
-jsConsole.start(Object.create(global));
+jsConsole.start(Object.create(global), null, "help text goes here");
 
 process.on('uncaughtException', function onError(error) {
     jsConsole.debug(error);
