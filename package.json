@@ -1,20 +1,22 @@
 {
-	"name": "BlessedJsConsole",
-	"description": "A mouse-driven JS console built on neo-blessed",
-	"scripts": {
-		"build": "ncc build index.js -o dist",
-		"compress": "terser dist/index.js -o dist/blessed-js-console.min.js"
-	},
-	"version": "0.0.1",
-	"repository": "asana/blessed-js-console",
-	"dependencies": {
-		"neo-blessed": "~0.2.0"
-	},
-	"engines": {
-		"node": ">=8.0.0"
-	},
-	"devDependencies": {
-		"@vercel/ncc": "^0.31.1",
-		"terser": "^5.9.0"
-	}
+    "name": "@fliu7/blessed-js-console",
+    "description": "A mouse-driven JS console built directly on neo-blessed",
+    "scripts": {
+        "build": "ncc build index.js -o dist",
+        "compress": "terser dist/index.js -o dist/blessed-js-console.min.js"
+    },
+    "license": "MIT",
+    "version": "1.0.0",
+    "repository": "asana/blessed-js-console",
+    "main": "index.js",
+    "dependencies": {
+        "neo-blessed": "~0.2.0"
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
+    "devDependencies": {
+        "@vercel/ncc": "^0.31.1",
+        "terser": "^5.9.0"
+    }
 }
